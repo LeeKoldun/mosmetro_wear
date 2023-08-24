@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mosmetro_wear/screens/splash.dart';
-import 'package:mosmetro_wear/widgets/wear_screen_base.dart';
 
 import 'style.dart';
+import 'templates/adapt_screen_base.dart';
 
 void main() {
   runApp(const MainApp());
@@ -23,7 +23,7 @@ class WatchScreen extends StatelessWidget {
   const WatchScreen({super.key});
 
   @override
-  Widget build(BuildContext context) => const WearScreenBase(
-    child: SplashScreen()
+  Widget build(BuildContext context) => AdaptScreenBase(
+    builder: (context, size) => const SplashScreen(),
   );
 }

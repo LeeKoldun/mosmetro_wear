@@ -1,6 +1,7 @@
-import 'package:wear/wear.dart';
+import 'package:flutter/material.dart';
 
 class Globals {
-  static late WearMode mode;
-  static late WearShape shape;
+  static final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
+  
+  static BuildContext get curContext => navKey.currentContext!;
 }

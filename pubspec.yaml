@@ -9,7 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  wear: ^1.1.0
+  wearable_rotary: ^2.0.2
+  # wear: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -19,4 +20,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - ./assets
+    - ./assets/
