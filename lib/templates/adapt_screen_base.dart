@@ -1,18 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:mosmetro_wear/style.dart';
 
 
 class AdaptScreenBase extends StatelessWidget {
-  final Widget Function(BuildContext context, Size size) builder;
+  final Widget Function(BuildContext context, double size) builder;
+  final Color? background;
+
+  final bool inDebug = false;
 
   const AdaptScreenBase({
     super.key,
     required this.builder,
+    this.background,
   });
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return builder(context, size);
+    if(!inDebug) {
+      double size = MediaQuery.of(context).size.shortestSide;
+      return Scaffold(
+        body: Center(
+          child: FittedBox(
+            child: Container(
+              decoration: BoxDecoration(
+                color: background,
+                gradient: background == null ? backgroundGradient : null
+              ),
+              width: size,
+              height: size,
+              child: builder(context, size)
+            ),
+          ),
+        ),
+      );
+    }
+    else {
+      double size = 450;
+      return Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: FittedBox(
+            child: Container(
+              decoration: BoxDecoration(
+                color: background,
+                gradient: background == null ? backgroundGradient : null
+              ),
+              width: size,
+              height: size,
+              child: builder(context, size)
+            ),
+          ),
+        ),
+      );
+    }
   }
 }
 
